@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import React from "react";
 import { ImagesSlider } from "@/components/ui/images-slider";
 import { TitleAnimation } from "@/components/title";
+import { ConfettiButtonDemo } from "./confettibutton";
 
 export function ImagesSliderDemo() {
     const images = [
@@ -33,6 +34,7 @@ export function ImagesSliderDemo() {
                     <TitleAnimation words = "amor"/>
                     <TitleAnimation words = "de mi vida"/>
                     <TitleAnimation words = "❤️"/>
+                    <ConfettiButtonDemo></ConfettiButtonDemo>
                 </div>
             </motion.div>
         </ImagesSlider>)
