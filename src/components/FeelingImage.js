@@ -16,8 +16,8 @@ export default function FeelingImage({url = "/images/hero1.jpg"}){
                 }}>
                 <Image
                     src={url ? url : '/images/hero1.jpg'}
-                    width={400}
-                    height={400}
+                    width={380}
+                    height={380}
                     className=
                         "rounded-lg"
                     

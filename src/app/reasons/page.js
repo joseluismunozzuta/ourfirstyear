@@ -11,6 +11,8 @@ import NumberTicker from "../../components/ui/number-ticker";
 import BlurIn from "../../components/ui/blur-in";
 import HyperText from "../../components/ui/hyper-text";
 import Particles from "../../components/ui/particles";
+import PulsatingButton from "../../components/ui/pulsating-button";
+import Link from "next/link";
 
 export default function Home() {
 
@@ -84,15 +86,18 @@ export default function Home() {
     }, []);
 
     useEffect(() => {
+        if (items.length > 0 && reasons.length > 0) {
+            handleRandomize(); // Initial random values when items and reasons load
+        }
+    }, [items, reasons]);
+
+    const handleRandomize = () => {
         if (items.length > 0) {
             const randomIndex = Math.floor(Math.random() * items.length);
             setCardImage(items[randomIndex].imgUrl);
         }
-    }, [items]);
 
-    useEffect(() => {
         if (reasons.length > 0) {
-            // Generate a random number between 1 and 365
             const randomId = Math.floor(Math.random() * 365) + 1;
             let razon = reasons[randomId].razon;
             let numerorazon = reasons[randomId].id.toString();
@@ -100,12 +105,11 @@ export default function Home() {
             razon = razon.charAt(0).toLowerCase() + razon.slice(1);
             setReasonText(razon);
             setReasonNumber(`Razón ${numerorazon}`);
-            console.log(reasons[randomId]);
         }
-    }, [reasons]);
+    };
 
     return (<>
-        <div className="m-0 relative h-screen w-full bg-black overflow-hidden border">
+        <div className="m-0 relative h-screen overflow-y-scroll w-full bg-black overflow-hidden border">
             <Particles
                 className="absolute inset-0"
                 quantity={1000}
@@ -118,7 +122,7 @@ export default function Home() {
                 <p className="text-center text-8xl font-medium tracking-tighter text-black dark:text-white">
                     <NumberTicker className={"font-delius  text-white font-bold"} value={365} delay={1.5} />
                 </p>
-                <p className="font-fuzzy px-10 my-4 text-2xl text-center text-white italic">razones por las que te amo, {belAlias[1]} ❤️</p>
+                <p className="font-fuzzy px-10 my-4 text-xl text-center text-white italic">razones por las que te amo, {belAlias[1]} ❤️</p>
             </div>
 
             <FeelingImage url={cardImage} />
@@ -130,8 +134,14 @@ export default function Home() {
             </div>
 
             <BlurIn word={`Te amo porque ${reasonText}, ${belAlias[0]}🤍`}
-                className="mt-6 mb-4 px-8 text-center font-wittgenstein text-xl font-light text-white dark:text-white"
+                className="mt-6 mb-4 px-8 text-center font-wittgenstein text-lg font-light text-white dark:text-white"
             ></BlurIn>
+            <div className="mb-3 m-auto flex justify-center flex-row gap-3">
+                <Link href="/"><button type="button"
+                    className="w-full m-auto btn btn-secondary font-light normal-case">Atrás</button></Link>
+                <PulsatingButton onClick={handleRandomize} className="w-1/2">Dame otra</PulsatingButton>
+            </div>
+
         </div>
 
 

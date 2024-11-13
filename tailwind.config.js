@@ -14,7 +14,7 @@ module.exports = {
 				sour: ['"Sour Gummy"', 'sans-serif'],
 				tangerine: ['Tangerine', 'cursive'],
 				wittgenstein: ['Wittgenstein', 'serif'],
-			  },
+			},
 			colors: {
 				background: 'hsl(var(--background))',
 				foreground: 'hsl(var(--foreground))',
@@ -77,5 +77,9 @@ module.exports = {
 			}
 		}
 	},
-	plugins: [require("tailwindcss-animate")],
+	plugins: [
+		require("tailwindcss-animate"),
+		require("daisyui"),
+	]
+
 };
