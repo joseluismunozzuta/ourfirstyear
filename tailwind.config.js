@@ -10,6 +10,7 @@ module.exports = {
 		extend: {
 			fontFamily: {
 				delius: ['"Delius Swash Caps"', 'cursive'],
+				fuzzy: ['"Fuzzy Bubbles"', 'cursive'],
 				sour: ['"Sour Gummy"', 'sans-serif'],
 				tangerine: ['Tangerine', 'cursive'],
 				wittgenstein: ['Wittgenstein', 'serif'],

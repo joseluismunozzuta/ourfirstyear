@@ -20,9 +20,11 @@ const config = {
 		extend: {
 			fontFamily: {
 				delius: ['Delius Swash Caps"', 'cursive'],
+				fuzzy: ['"Fuzzy Bubbles"', 'regular'],
 				sour: ['Sour Gummy"', 'sans-serif'],
 				tangerine: ['Tangerine', 'cursive'],
 				wittgenstein: ['Wittgenstein', 'serif']
+
 			},
 			colors: {
 				border: 'hsl(var(--border))',
