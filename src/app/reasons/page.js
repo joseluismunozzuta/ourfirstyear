@@ -33,23 +33,6 @@ export default function Home() {
 
     useEffect(() => {
 
-        const getAliasBel = () => {
-            const randomAlias = [];
-            const usedIndices = new Set();
-            while (randomAlias.length < 2) {
-                const randomIndex = Math.floor(Math.random() * belNames.length);
-                if (!usedIndices.has(randomIndex)) {
-                    usedIndices.add(randomIndex);
-                    let name = belNames[randomIndex];
-                    /*if (randomAlias.length === 0) {
-                        name = name.charAt(0).toUpperCase() + name.slice(1);
-                    }*/
-                    randomAlias.push(name);
-                }
-            }
-            setBelAlias(randomAlias);
-        }
-
         const fetchItems = async () => {
             setLoading(true); // Start loading spinner
             const itemsCollection = collection(db, "moments");
@@ -88,8 +71,26 @@ export default function Home() {
     useEffect(() => {
         if (items.length > 0 && reasons.length > 0) {
             handleRandomize(); // Initial random values when items and reasons load
+            getAliasBel();
         }
     }, [items, reasons]);
+
+    const getAliasBel = () => {
+        const randomAlias = [];
+        const usedIndices = new Set();
+        while (randomAlias.length < 2) {
+            const randomIndex = Math.floor(Math.random() * belNames.length);
+            if (!usedIndices.has(randomIndex)) {
+                usedIndices.add(randomIndex);
+                let name = belNames[randomIndex];
+                /*if (randomAlias.length === 0) {
+                    name = name.charAt(0).toUpperCase() + name.slice(1);
+                }*/
+                randomAlias.push(name);
+            }
+        }
+        setBelAlias(randomAlias);
+    }
 
     const handleRandomize = () => {
         if (items.length > 0) {
