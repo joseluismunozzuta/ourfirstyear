@@ -40,7 +40,7 @@ export function ImagesSliderDemo() {
                     <ConfettiButtonDemo></ConfettiButtonDemo>
                 </div>
                 <div className="h-1/3 flex flex-col my-4 m-auto justify-center">
-                    <TextGenerateEffect words="365 dìas juntos 🥹 hoy te regalo una razón por cada día vivido ❤️" />
+                    <TextGenerateEffect words="365 días juntos 🥹 hoy te regalo una razón por cada día vivido ❤️" />
                     <Link href="/reasons" className="my-5">
                         <PulsatingButton className="m-auto">🤍</PulsatingButton>
                     </Link>

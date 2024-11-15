@@ -64,14 +64,12 @@ export default function Home() {
         }
 
         fetchItems();
-        getAliasBel();
 
     }, []);
 
     useEffect(() => {
         if (items.length > 0 && reasons.length > 0) {
             handleRandomize(); // Initial random values when items and reasons load
-            getAliasBel();
         }
     }, [items, reasons]);
 
@@ -93,6 +91,7 @@ export default function Home() {
     }
 
     const handleRandomize = () => {
+        setLoading(true);
         if (items.length > 0) {
             const randomIndex = Math.floor(Math.random() * items.length);
             setCardImage(items[randomIndex].imgUrl);
@@ -107,6 +106,8 @@ export default function Home() {
             setReasonText(razon);
             setReasonNumber(`Razón ${numerorazon}`);
         }
+        getAliasBel();
+        setLoading(false);
     };
 
     return (<>
@@ -127,17 +128,17 @@ export default function Home() {
             </div>
 
             <FeelingImage url={cardImage} />
-            <div className="mx-auto mt-10 mb-2 w-7/12">
+            <div className="mx-auto mt-10 w-1/2">
                 <HyperText
-                    className="m-auto text-center text-5xl font-wittgenstein font-light text-white dark:text-white"
+                    className="m-auto text-center text-4xl font-wittgenstein font-light text-white dark:text-white"
                     text={reasonNumber}
                 />
             </div>
 
             <BlurIn word={`Te amo porque ${reasonText}, ${belAlias[0]}🤍`}
-                className="mt-6 mb-4 px-8 text-center font-wittgenstein text-lg font-light text-white dark:text-white"
+                className="my-4 px-8 text-center font-wittgenstein text-lg font-light text-white dark:text-white"
             ></BlurIn>
-            <div className="mb-3 m-auto flex justify-center flex-row gap-3">
+            <div className="my-3 m-auto flex justify-center flex-row gap-3">
                 <Link href="/"><button type="button"
                     className="w-full m-auto btn btn-secondary font-light normal-case">Atrás</button></Link>
                 <PulsatingButton onClick={handleRandomize} className="w-1/2">Dame otra</PulsatingButton>

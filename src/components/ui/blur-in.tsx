@@ -13,7 +13,7 @@ interface BlurIntProps {
   };
   duration?: number;
 }
-const BlurIn = ({ word, className, variant, duration = 4 }: BlurIntProps) => {
+const BlurIn = ({ word, className, variant, duration = 3 }: BlurIntProps) => {
   const defaultVariants = {
     hidden: { filter: "blur(10px)", opacity: 0 },
     visible: { filter: "blur(0px)", opacity: 1 },
@@ -22,6 +22,7 @@ const BlurIn = ({ word, className, variant, duration = 4 }: BlurIntProps) => {
 
   return (
     <motion.h1
+      key={word}
       initial="hidden"
       animate="visible"
       transition={{ duration }}
